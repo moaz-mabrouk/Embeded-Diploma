@@ -1,13 +1,18 @@
 #ifndef ADC_INTERFACE_H
 #define ADC_INTERFACE_H
 
-/*Reference voltage enum*/
+/*------------------------------------*/
+/*---------Reference voltage----------*/
+/*------------------------------------*/
 typedef enum {
 	external_Aref =0x00<<6,
 	internal_Avcc =0x01<<6,
 	internal_vref =0x03<<6
 }enum_refVoltage;
-/*channel selection enum*/
+
+/*------------------------------------*/
+/*---------Channel selection----------*/
+/*------------------------------------*/
 typedef enum{
 	ADC0,
 	ADC1,
@@ -42,9 +47,12 @@ typedef enum{
 	ADC_V,
 	ADC_GND
 }enum_channels;
-/*prescaler division factors*/
+
+/*------------------------------------*/
+/*-----Prescaler division factors-----*/
+/*------------------------------------*/
 typedef enum{
-	divisionFactor2,
+	divisionFactor2_zero,
 	divisionFactor2,
 	divisionFactor4,
 	divisionFactor8,
@@ -53,7 +61,10 @@ typedef enum{
 	divisionFactor64,
 	divisionFactor128
 }enum_prescaler;
-/*auto trigger sources*/
+
+/*------------------------------------*/
+/*--------Auto trigger sources--------*/
+/*------------------------------------*/
 typedef enum{
 	freeRun=0x00<<5,
 	analogComparator=0x01<<5,
@@ -63,12 +74,51 @@ typedef enum{
 	timer_CompareMatchB=0x05<<5,
 	timer1_overflow=0x06<<5,
 	timer1_event=0x07<<5,
-}enum_triggers
+}enum_triggers;
+
+/*------------------------------------*/
+/*--------Enable/Disable states-------*/
+/*------------------------------------*/
+typedef enum{
+	Disable,
+	Enable
+}enum_state;
+
+/********************************************************************/
+/****************************Prototypes******************************/
+/********************************************************************/
+
+/*-------To Enable/Disable ADC---------*/
+u8 ADC_u8State(enum_state Copy_enuState);
 
 
+/*--------Select Ref. Voltage----------*
+ *-----------& Prescaler---------------*/
 u8 ADC_u8Init(enum_refVoltage Copy_enuRefVoltage, enum_prescaler Copy_enuPrescaler );
-u8 ADC_u8InterruptEnable(enum_triggers Copy_enuTriggers);
-u8 ADC_u8GetReading(enum_channels Copy_enuChannels);
+
+
+/*------------Select channel-----------*/
+u8 ADC_ChannelSelect(enum_channels Copy_enuChannels);
+
+
+/*----------Start conversion----------*/
+u8 ADC_u8StartConversion(void);
+
+
+/*----Enable/Disable auto trigger-----*/
+u8 ADC_u8AutoTriggerState(enum_state Copy_enuState);
+
+
+/*---------Auto Trigger source--------*/
+u8 ADC_u8AutoTriggerSource(enum_triggers Copy_enuTriggers);
+
+
+/*Enable/Disable interrupt on conversion*/
+u8 ADC_u8ConversionCompleteInterruptState(enum_state Copy_enuState);
+
+
+/*-------------Read result------------*/
+u8 ADC_u8GetReading(u16* pu16Value);
 
 
 #endif 
