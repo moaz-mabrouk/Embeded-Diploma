@@ -3,9 +3,7 @@
 #include "EXTI_registers.h"
 #include"EXTI_interface.h"
 
-/**********************************************************/
-/********************Interrupt Enable**********************/
-/**********************************************************/
+
 void EXT0_vdEnable(enu_SenseControl Copy_enuSenseControlMode) {
 
 	/*Sensing control*/
@@ -31,7 +29,6 @@ void EXT0_vdEnable(enu_SenseControl Copy_enuSenseControlMode) {
 	/*Enable interrupt (PIE)*/
 	SET_BIT(GICR, GICR_INT0);
 }
-
 /*------------------------------------------------------------*/
 void EXT1_vdEnable(enu_SenseControl Copy_enuSenseControlMode) {
 
@@ -58,7 +55,6 @@ void EXT1_vdEnable(enu_SenseControl Copy_enuSenseControlMode) {
 	/*Enable interrupt (PIE)*/
 	SET_BIT(GICR, GICR_INT1);
 }
-
 /*------------------------------------------------------------*/
 void EXT2_vdEnable(enu_SenseControl Copy_enuSenseControlMode) {
 	/*Sensing control*/
@@ -77,10 +73,7 @@ void EXT2_vdEnable(enu_SenseControl Copy_enuSenseControlMode) {
 	/*Enable interrupt (PIE)*/
 	SET_BIT(GICR, GICR_INT2);
 }
-
-/**********************************************************/
-/********************Interrupt Disable**********************/
-/**********************************************************/
+/*------------------------------------------------------------*/
 void EXT0_vdDisable(void) {
 	SET_BIT(GICR, GICR_INT0);
 }

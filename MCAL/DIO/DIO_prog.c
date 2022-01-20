@@ -3,7 +3,7 @@
 #include"DIO_interface.h"
 #include"DIO_registers.h"
 
-/*Set direction of any pin on any port*/
+
 u8 DIO_u8SetPinDirection(enum_port Copy_enuPort, enum_pin Copy_enuPin, enum_direction Copy_enuDirection){
 /*Input*/
 	if(Copy_enuDirection== pinInput){
@@ -26,8 +26,7 @@ u8 DIO_u8SetPinDirection(enum_port Copy_enuPort, enum_pin Copy_enuPin, enum_dire
 
 	}
 }
-
-/*Set any pin value in any port*/
+/*------------------------------------------------------------*/
 u8 DIO_u8SetPinValue(enum_port Copy_enuPort, enum_pin Copy_enuPin, enum_value Copy_enuvalue){
 
 	if(Copy_enuvalue == pinHigh){
@@ -48,8 +47,7 @@ u8 DIO_u8SetPinValue(enum_port Copy_enuPort, enum_pin Copy_enuPin, enum_value Co
 	}
 
 }
-
-/*Read any pin value in any port*/
+/*------------------------------------------------------------*/
 u8 DIO_u8GetPinValue(enum_port Copy_enuPort, enum_pin Copy_enuPin, u8 *pu8Value){
 
 	switch (Copy_enuPort){
@@ -59,8 +57,7 @@ u8 DIO_u8GetPinValue(enum_port Copy_enuPort, enum_pin Copy_enuPin, u8 *pu8Value)
 	case portD: *pu8Value=GET_BIT(PIND,Copy_enuPin);break;
 	}
 }
-/*-----------------------------------------------------------------------------------------------------------*/
-/*Set any port direction*/
+/*------------------------------------------------------------*/
 u8 DIO_u8SetPortDirection(enum_port Copy_enuPort,enum_direction Copy_u8GeneralIO){
 
 	switch(Copy_enuPort){
@@ -70,8 +67,7 @@ u8 DIO_u8SetPortDirection(enum_port Copy_enuPort,enum_direction Copy_u8GeneralIO
 		case portD: DDRD=Copy_u8GeneralIO;break;
 	}
 }
-
-/*Set any port value*/
+/*------------------------------------------------------------*/
 u8 DIO_u8SetPortValue(enum_port Copy_enuPort,enum_value Copy_u8GeneralValue){
 
 		switch(Copy_enuPort){
@@ -81,8 +77,7 @@ u8 DIO_u8SetPortValue(enum_port Copy_enuPort,enum_value Copy_u8GeneralValue){
 			case portD: PORTD=Copy_u8GeneralValue;break;
 		}
 }
-
-/*Read any port value*/
+/*------------------------------------------------------------*/
 u8 DIO_u8GetPortValue(enum_port Copy_enuPort, u8 *pu8Value){
 	switch(Copy_enuPort){
 	case portA: *pu8Value=PINA;break;

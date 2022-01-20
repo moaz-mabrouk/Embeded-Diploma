@@ -1,7 +1,9 @@
 #ifndef DIO_INTERFACE_H
 #define DIO_INTERFACE_H
 
-/*Port enum*/
+/*------------------------------------*/
+/*-------------Port enum--------------*/
+/*------------------------------------*/
 typedef enum {
 	portA,
 	portB,
@@ -10,7 +12,9 @@ typedef enum {
 	
 }enum_port;
 
-/*Pin enum*/
+/*------------------------------------*/
+/*-------------Pin enum---------------*/
+/*------------------------------------*/
 typedef enum{
 	pin0__,
 	pin1__,
@@ -22,16 +26,19 @@ typedef enum{
 	pin7__
 }enum_pin;
 
-/*direction enum*/
+/*------------------------------------*/
+/*----------direction enum------------*/
+/*------------------------------------*/
 typedef enum {
 	pinInput,
 	pinOutput,
-	generalio,
 	portOutput=0xff,
 	portInput=0x00
 }enum_direction;
 
-/*value enum*/
+/*------------------------------------*/
+/*-------------value enum-------------*/
+/*------------------------------------*/
 typedef enum{
 	pinLow,
 	pinHigh,
@@ -40,19 +47,32 @@ typedef enum{
 	
 }enum_value;
 
+/********************************************************************/
+/****************************Prototypes******************************/
+/********************************************************************/
 
-/*Set direction of any pin on any port*/
+/*-Set direction of any pin on any port-*/
 u8 DIO_u8SetPinDirection(enum_port Copy_enuPort, enum_pin Copy_enuPin, enum_direction Copy_enuDirection);
-/*Set value of any pin in any port*/
+
+
+/*--Set value of any pin in any port---*/
 u8 DIO_u8SetPinValue(enum_port Copy_enuPort, enum_pin Copy_enuPin, enum_value Copy_enuvalue);
-/*Read value of any pin in any port*/
+
+
+/*--Read value of any pin in any port--*/
 u8 DIO_u8GetPinValue(enum_port Copy_enuPort, enum_pin Copy_enuPin, u8 *pu8Value);
-/*----------------------------------------------------------------------------------------*/
-/*Set any port direction*/
+
+
+/*-------Set any port direction--------*/
 u8 DIO_u8SetPortDirection(enum_port Copy_enuPort, enum_direction Copy_u8GeneralIO);
-/*Set any port value*/
+
+
+/*--------Set any port value-----------*/
 u8 DIO_u8SetPortValue(enum_port Copy_enuPort, enum_value Copy_u8GeneralValue);
-/*Read any port value*/
+
+
+/*---------Read any port value---------*/
 u8 DIO_u8GetPortValue(enum_port Copy_enuPort, u8 *pu8Value);
+
 
 #endif 

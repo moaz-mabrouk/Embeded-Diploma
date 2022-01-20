@@ -28,14 +28,19 @@
 #define ADCSRA *((volatile u8*)0x26)
 /*Enable bit*/
 #define ADCSRA_ADEN  7
+
 /*Start conversion bit*/
 #define ADCSRA_ADSC  6
+
 /*Auto Trigger Enable bit*/
 #define ADCSRA_ADATE 5
+
 /*Interrupt flag bit*/
 #define ADCSRA_ADIF  4
+
 /*Conversion complete interrupt bit*/
 #define ADCSRA_ADIE  3
+
 /*Pre-scaler bits*/
 #define ADCSRA_ADPS2 2
 #define ADCSRA_ADPS1 1
